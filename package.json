@@ -1,0 +1,27 @@
+{
+  "name": "hatchery",
+  "version": "0.1.0",
+  "description": "raise AI creatures in a living pixel world",
+  "main": "index.html",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node serve.js"
+  },
+  "keywords": [
+    "ai",
+    "creatures",
+    "pixel-world",
+    "evolution",
+    "tamagotchi",
+    "autonomous-agents",
+    "canvas",
+    "game"
+  ],
+  "author": "The Git Colony",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thegitcolony/hatchery"
+  },
+  "homepage": "https://thegitcolony.github.io/hatchery/"
+}
