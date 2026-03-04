@@ -6,13 +6,17 @@
 
 <p align="center">
   <a href="https://thegitcolony.github.io/hatchery"><img src="https://img.shields.io/badge/⬤_LIVE-enter_the_hatchery-50fa7b?style=for-the-badge" /></a>
+  &nbsp;
+  <a href="https://openclaw.ai"><img src="https://img.shields.io/badge/built_with-OpenClaw-8be9fd?style=for-the-badge" /></a>
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/interface-terminal%20%2F%20web-50fa7b?style=flat-square" />
   <img src="https://img.shields.io/badge/species-7-bd93f9?style=flat-square" />
   <img src="https://img.shields.io/badge/biomes-9-ff79c6?style=flat-square" />
   <img src="https://img.shields.io/badge/mutations-8-ffb86c?style=flat-square" />
   <img src="https://img.shields.io/badge/engine-autonomous-50fa7b?style=flat-square" />
+  <img src="https://img.shields.io/badge/dependencies-zero-white?style=flat-square" />
   <img src="https://img.shields.io/badge/license-MIT-white?style=flat-square" />
 </p>
 
@@ -144,15 +148,60 @@ each biome spawns tasks matching its type. creatures with matching species affin
 
 ## run it
 
+### terminal (recommended)
+
 ```bash
-# view the world (no build step, raw html)
+# clone and run
+git clone https://github.com/thegitcolony/hatchery.git
+cd hatchery
+node cli.js
+```
+
+a full terminal UI renders the living world in ASCII — biome textures, creature sprites, stat panels, event log. no dependencies to install.
+
+```
+┌─────────────────────────────────────────────────────┬──────────────────────┐
+│ ,,.',,...◉..,,,'.,,.✧.,,,..✦..,,,.,✧.,,,..,,',,.   │  Orbdust the Glimmer │
+│ .,,.,,',,.,,,,.,,',,.,,,,,,.,,.,,,..,,,',,,,,.',,.   │  L3 PWR:142 HP:100   │
+│ ,,,'.,◈..,,,.',,,.,,.,,,,,◌,,.,,,,,.',,,.,,',,,,,   │  ─────────────────── │
+│ .,',.,,,,.',,,,.$$.$$$.$$✧$$.$$$.$$..,,,,.',,,,,,   │  INT ████████░░░ 22  │
+│ ,,,,,.,,,.,,',,.$$.$$$.$$$.$$$$.$$$.,,,,,.,,',,,◉   │  CRE █████░░░░░░ 14  │
+│ ,,.✧,,,,,.,,,,,.$$.$$.$$$.$$.$$$$.$.,,,,,,.,,,.',   │  STR ██████████░  28  │
+│ ,,,,.,,,,.△.',,.$$✧$$.$$$.$$$$.$$$$.,,,,,,.,,,,,,   │  SPD ██████░░░░░ 16  │
+│ ,.,,,.,,,,,,.',.$$.$$.$$$$.$$$.$$$$.,,,,,.,,,,.',   │  LCK ████████░░░ 21  │
+│ ,,.',.,,',,,,,,.$$$.$$$.$$$.$$$.$$$.,,✧,,,.',,,,,   │  ─────────────────── │
+│ ,,.,,,,,.❀,,',.·····:··✧···:····::···,,,,,,.'.,,,   │  ♔ ♦  horns wings    │
+│ .,,,,.,,,,,.','·····:···:····::·····✧·.,,,,,.,,,,   │  XP ████████░░░ 67%  │
+│ ,,.',,,,,.,,,,,····::···◉··:····:······,',,,,,.,,   │  hunting code task   │
+│                                                     │  ─────────────────── │
+│                                                     │  BIOMES              │
+│                                                     │  Meadow  gather   2  │
+│                                                     │  Forge   code     1  │
+└─────────────────────────────────────────────────────┴──────────────────────┘
+ 12s ✓ Orbdust completed code (+34xp)
+  8s ⬆ Orbdust leveled up to 3!
+  8s ★ Orbdust mutated: horns!
+  3s ✗ Zapwing failed explore...
+```
+
+### web
+
+```bash
+# browser version
 open index.html
 
-# run the engine (autonomous world simulation)
+# or with local server
+node serve.js
+```
+
+### engine only (headless)
+
+```bash
+# run the world simulation without UI
 node engine/run.js
 ```
 
-the engine writes `world-state.json` → the frontend reads it. no framework. no build step. raw canvas.
+the engine writes `world-state.json` → the frontend reads it. no framework. no build step.
 
 ## architecture
 
@@ -170,7 +219,8 @@ docs/
 ├── ARCHITECTURE.md # detailed technical breakdown
 └── ROADMAP.md      # version roadmap (v0.1 → v1.0)
 
-index.html          # the entire frontend (single file, canvas renderer)
+cli.js              # terminal UI (ASCII world renderer + stat panels)
+index.html          # web frontend (canvas renderer)
 world-state.json    # current state (engine output → frontend input)
 serve.js            # local dev server
 ```
@@ -193,7 +243,11 @@ serve.js            # local dev server
 
 ## tech
 
-`html5 canvas` · `vanilla js` · `node.js` · `zero dependencies` · `procedural generation` · `genetic algorithms` · `finite state machines` · `autonomous agents`
+`node.js` · `html5 canvas` · `vanilla js` · `ANSI terminal rendering` · `zero dependencies` · `procedural generation` · `genetic algorithms` · `finite state machines` · `autonomous agents`
+
+### no dependencies
+
+hatchery has zero npm dependencies. the engine, terminal UI, and web frontend are all built from scratch with Node.js standard library and browser APIs. `npm install` is never required.
 
 ## controls
 
@@ -203,6 +257,25 @@ serve.js            # local dev server
 | drag | pan camera across the world |
 | 🥚 hatch egg | spawn a new creature with random DNA |
 | minimap | overview of all creatures and tasks |
+
+## controls (terminal)
+
+| key | action |
+|-----|--------|
+| `wasd` / arrows | pan camera |
+| `tab` / `n` | cycle selected creature |
+| `f` | follow selected creature |
+| `e` | hatch new egg |
+| `i` | toggle inspect mode |
+| `space` / `p` | pause / unpause |
+| `h` / `?` | help |
+| `q` | quit |
+
+## built with OpenClaw
+
+this entire codebase — the genetics engine, AI behavior system, evolution mechanics, terminal renderer, and web frontend — was built autonomously by an AI agent running on [OpenClaw](https://openclaw.ai). every file, every commit, every design decision.
+
+> an AI built a living world you can run in your terminal.
 
 ## contributing
 
