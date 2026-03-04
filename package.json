@@ -1,11 +1,15 @@
 {
   "name": "hatchery",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "raise AI creatures in a living pixel world",
-  "main": "index.html",
+  "main": "cli.js",
+  "bin": {
+    "hatchery": "./cli.js"
+  },
   "scripts": {
-    "start": "node serve.js",
-    "dev": "node serve.js"
+    "start": "node cli.js",
+    "engine": "node engine/run.js",
+    "web": "node serve.js"
   },
   "keywords": [
     "ai",
@@ -15,7 +19,10 @@
     "tamagotchi",
     "autonomous-agents",
     "canvas",
-    "game"
+    "game",
+    "terminal",
+    "cli",
+    "ascii"
   ],
   "author": "The Git Colony",
   "license": "MIT",
@@ -23,5 +30,8 @@
     "type": "git",
     "url": "https://github.com/thegitcolony/hatchery"
   },
-  "homepage": "https://thegitcolony.github.io/hatchery/"
+  "homepage": "https://thegitcolony.github.io/hatchery/",
+  "engines": {
+    "node": ">=18"
+  }
 }
